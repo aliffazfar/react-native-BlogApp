@@ -1,10 +1,25 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 
-const BlogContext = React.createContext<any | undefined>(undefined)
+interface ContextState {
+  title: string
+}
 
-export const BlogProvider: FC = ({ children }) => {
+const BlogContext = React.createContext<any>('')
+
+export const BlogProvider: FC<ContextState> = ({ children }) => {
+  const [blogPosts, setBlogPosts] = useState<any>([])
+
+  const addBlogPosts = () => {
+    setBlogPosts([
+      ...blogPosts,
+      { title: `Blog Post #${blogPosts.length + 1}` },
+    ])
+  }
+
   return (
-    <BlogContext.Provider value='hi there'>{children}</BlogContext.Provider>
+    <BlogContext.Provider value={{ data: blogPosts, addBlogPosts }}>
+      {children}
+    </BlogContext.Provider>
   )
 }
 
