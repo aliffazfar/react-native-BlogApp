@@ -9,12 +9,17 @@ import {
 } from 'react-native'
 import { Context } from '../context/BlogContext'
 import { Feather } from '@expo/vector-icons'
+import {
+  NavigationStackScreenComponent,
+  NavigationStackScreenProps,
+} from 'react-navigation-stack'
 
-interface indexProp {
+interface Props extends NavigationStackScreenProps {
+  // your props...
   navigation: any
 }
 
-const IndexScreen: FC<indexProp> = ({ navigation }) => {
+const IndexScreen: NavigationStackScreenComponent<Props> = ({ navigation }) => {
   const { state, addBlogPost, deleteBlogPost } = useContext(Context)
 
   return (
@@ -44,6 +49,14 @@ const IndexScreen: FC<indexProp> = ({ navigation }) => {
   )
 }
 
+IndexScreen.navigationOptions = ({ navigation }) => ({
+  headerRight: () => (
+    <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+      <Feather style={{ marginRight: 10 }} name='plus' size={30} />
+    </TouchableOpacity>
+  ),
+})
+
 export default IndexScreen
 
 const styles = StyleSheet.create({
@@ -61,5 +74,6 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 24,
+    marginRight: 2,
   },
 })
