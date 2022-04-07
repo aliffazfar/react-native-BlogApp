@@ -11,6 +11,7 @@ const navigator = createStackNavigator(
     initialRouteName: 'Index',
     defaultNavigationOptions: {
       title: 'Blogs',
+      cardStyle: { backgroundColor: '#FFFFFF' },
     },
   }
 )
