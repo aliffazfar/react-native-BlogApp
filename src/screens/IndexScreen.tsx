@@ -14,17 +14,18 @@ import {
   NavigationStackScreenProps,
 } from 'react-navigation-stack'
 
-interface Props extends NavigationStackScreenProps {
+interface Props {
   // your props...
   navigation: any
+  Index: any
+  navigationOptions: any
 }
 
 const IndexScreen: NavigationStackScreenComponent<Props> = ({ navigation }) => {
-  const { state, addBlogPost, deleteBlogPost } = useContext(Context)
+  const { state, deleteBlogPost } = useContext(Context)
 
   return (
     <View>
-      <Button title='Add Post' onPress={addBlogPost} />
       <FlatList
         data={state}
         keyExtractor={(blogPosts) => blogPosts.title}
