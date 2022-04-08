@@ -28,7 +28,11 @@ const ShowScreen: NavigationStackScreenComponent<showProp> = ({
 
 ShowScreen.navigationOptions = ({ navigation }) => ({
   headerRight: () => (
-    <TouchableOpacity onPress={() => navigation.navigate('Edit')}>
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate('Edit', { id: navigation.getParam('id') })
+      }
+    >
       <EvilIcons style={{ marginRight: 10 }} name='pencil' size={35} />
     </TouchableOpacity>
   ),
