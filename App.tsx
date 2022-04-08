@@ -4,11 +4,13 @@ import IndexScreen from './src/screens/IndexScreen'
 import { Provider } from './src/context/BlogContext'
 import ShowScreen from './src/screens/ShowScreen'
 import CreateScreen from './src/screens/CreatScreen'
+import EditScreen from './src/screens/EditScreen'
 
 const navigator = createStackNavigator(
   {
     Index: IndexScreen,
     Show: ShowScreen,
+    Edit: EditScreen,
     Create: CreateScreen,
   },
   {

@@ -9,16 +9,11 @@ import {
 } from 'react-native'
 import { Context } from '../context/BlogContext'
 import { Feather } from '@expo/vector-icons'
-import {
-  NavigationStackScreenComponent,
-  NavigationStackScreenProps,
-} from 'react-navigation-stack'
+import { NavigationStackScreenComponent } from 'react-navigation-stack'
 
 interface Props {
   // your props...
   navigation: any
-  Index: any
-  navigationOptions: any
 }
 
 const IndexScreen: NavigationStackScreenComponent<Props> = ({ navigation }) => {
