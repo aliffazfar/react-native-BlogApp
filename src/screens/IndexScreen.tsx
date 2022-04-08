@@ -1,4 +1,4 @@
-import React, { FC, useContext } from 'react'
+import React, { FC, useContext, useEffect } from 'react'
 import {
   Text,
   View,
@@ -17,7 +17,18 @@ interface Props {
 }
 
 const IndexScreen: NavigationStackScreenComponent<Props> = ({ navigation }) => {
-  const { state, deleteBlogPost } = useContext(Context)
+  const { state, deleteBlogPost, getBlogPosts } = useContext(Context)
+
+  useEffect(() => {
+    getBlogPosts()
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogPosts()
+    })
+
+    return () => {
+      listener.remove()
+    }
+  }, [])
 
   return (
     <View>
