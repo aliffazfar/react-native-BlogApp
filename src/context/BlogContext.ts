@@ -44,10 +44,10 @@ const deleteBlogPost = (dispatch: any) => {
   }
 }
 
-const editBlogPost = (
-  dispatch: (arg0: { type: string; payload: any }) => void
-) => {
-  return (id: any, title: any, content: any, callback: any) => {
+const editBlogPost = (dispatch: any) => {
+  return async (id: number, title: any, content: any, callback: any) => {
+    await jsonServer.put(`/blogposts/${id}`, { title, content })
+
     dispatch({ type: 'edit_blogpost', payload: { id, title, content } })
     if (callback) {
       callback()
